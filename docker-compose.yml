@@ -1,0 +1,105 @@
+version: '3.8'
+
+services:
+  patient-service:
+    build:
+      context: .
+      dockerfile: PatientService/Dockerfile
+    container_name: patient-service
+    ports:
+      - "5001:5001"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__DefaultConnection: "Data Source=/app/data/PatientDB.db"
+    volumes:
+      - patient-data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - hams-network
+
+  doctor-service:
+    build:
+      context: .
+      dockerfile: DoctorService/Dockerfile
+    container_name: doctor-service
+    ports:
+      - "5002:5002"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__DefaultConnection: "Data Source=/app/data/DoctorDB.db"
+    volumes:
+      - doctor-data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - hams-network
+
+  appointment-service:
+    build:
+      context: .
+      dockerfile: AppointmentService/Dockerfile
+    container_name: appointment-service
+    ports:
+      - "5003:5003"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__DefaultConnection: "Data Source=/app/data/AppointmentDB.db"
+      ExternalServices__PatientServiceBaseUrl: "http://patient-service:5001"
+      ExternalServices__DoctorServiceBaseUrl: "http://doctor-service:5002"
+    volumes:
+      - appointment-data:/app/data
+    depends_on:
+      patient-service:
+        condition: service_healthy
+      doctor-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - hams-network
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    container_name: api-gateway
+    ports:
+      - "5000:5000"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ReverseProxy__Clusters__patients-cluster__Destinations__patients-service__Address: "http://patient-service:5001"
+      ReverseProxy__Clusters__doctors-cluster__Destinations__doctors-service__Address: "http://doctor-service:5002"
+      ReverseProxy__Clusters__appointments-cluster__Destinations__appointments-service__Address: "http://appointment-service:5003"
+    depends_on:
+      patient-service:
+        condition: service_healthy
+      doctor-service:
+        condition: service_healthy
+      appointment-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - hams-network
+
+volumes:
+  patient-data:
+  doctor-data:
+  appointment-data:
+
+networks:
+  hams-network:
+    driver: bridge
