@@ -1,0 +1,486 @@
+{
+  "info": {
+    "_postman_id": "hams-microservices-api",
+    "name": "HAMS Microservices API",
+    "description": "Healthcare Appointment Management System - Complete API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Patient Service",
+      "item": [
+        {
+          "name": "Get All Patients",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5001/api/v1/patients",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "patients"]
+            }
+          }
+        },
+        {
+          "name": "Get Patient by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5001/api/v1/patients/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "patients", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Rajesh Kumar\",\n  \"age\": 45,\n  \"gender\": \"Male\",\n  \"phone\": \"+1-555-2001\",\n  \"email\": \"rajesh.kumar@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/v1/patients",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "patients"]
+            }
+          }
+        },
+        {
+          "name": "Update Patient",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Rajesh Kumar Updated\",\n  \"age\": 46,\n  \"gender\": \"Male\",\n  \"phone\": \"+1-555-2001\",\n  \"email\": \"rajesh.kumar.updated@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/v1/patients/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "patients", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Patient",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:5001/api/v1/patients/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "patients", "1"]
+            }
+          }
+        },
+        {
+          "name": "Patient Service Health",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5001/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Doctor Service",
+      "item": [
+        {
+          "name": "Get All Doctors",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5002/api/v1/doctors",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5002",
+              "path": ["api", "v1", "doctors"]
+            }
+          }
+        },
+        {
+          "name": "Get Doctor by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5002/api/v1/doctors/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5002",
+              "path": ["api", "v1", "doctors", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Doctor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Dr. Vikram Singh\",\n  \"specialization\": \"Neurology\",\n  \"experience\": 12,\n  \"consultationFee\": 1800,\n  \"available\": true\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5002/api/v1/doctors",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5002",
+              "path": ["api", "v1", "doctors"]
+            }
+          }
+        },
+        {
+          "name": "Update Doctor",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Dr. Vikram Singh Updated\",\n  \"specialization\": \"Neurology\",\n  \"experience\": 13,\n  \"consultationFee\": 2000,\n  \"available\": true\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5002/api/v1/doctors/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5002",
+              "path": ["api", "v1", "doctors", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Doctor",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:5002/api/v1/doctors/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5002",
+              "path": ["api", "v1", "doctors", "1"]
+            }
+          }
+        },
+        {
+          "name": "Doctor Service Health",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5002/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5002",
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Appointment Service",
+      "item": [
+        {
+          "name": "Get All Appointments",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5003/api/v1/appointments",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5003",
+              "path": ["api", "v1", "appointments"]
+            }
+          }
+        },
+        {
+          "name": "Get Appointment by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5003/api/v1/appointments/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5003",
+              "path": ["api", "v1", "appointments", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Appointment History by Patient",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5003/api/v1/appointments/history/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5003",
+              "path": ["api", "v1", "appointments", "history", "1"]
+            }
+          }
+        },
+        {
+          "name": "Book Appointment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientId\": 1,\n  \"doctorId\": 1,\n  \"appointmentDate\": \"2025-12-20T14:00:00Z\",\n  \"notes\": \"Routine cardiac check-up\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5003/api/v1/appointments",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5003",
+              "path": ["api", "v1", "appointments"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Appointment",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:5003/api/v1/appointments/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5003",
+              "path": ["api", "v1", "appointments", "1"]
+            }
+          }
+        },
+        {
+          "name": "Appointment Service Health",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5003/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5003",
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "API Gateway",
+      "item": [
+        {
+          "name": "Gateway Health",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5000/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["health"]
+            }
+          }
+        },
+        {
+          "name": "Get Patients via Gateway",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5000/api/v1/patients",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "v1", "patients"]
+            }
+          }
+        },
+        {
+          "name": "Get Doctors via Gateway",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5000/api/v1/doctors",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "v1", "doctors"]
+            }
+          }
+        },
+        {
+          "name": "Get Appointments via Gateway",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5000/api/v1/appointments",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "v1", "appointments"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Integration Tests",
+      "item": [
+        {
+          "name": "Complete Workflow: Create Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Integration Test Patient\",\n  \"age\": 30,\n  \"gender\": \"Female\",\n  \"phone\": \"+1-555-9999\",\n  \"email\": \"integration.test@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/v1/patients",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "patients"]
+            }
+          }
+        },
+        {
+          "name": "Complete Workflow: Create Doctor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Dr. Integration Test\",\n  \"specialization\": \"General Medicine\",\n  \"experience\": 5,\n  \"consultationFee\": 500,\n  \"available\": true\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5002/api/v1/doctors",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5002",
+              "path": ["api", "v1", "doctors"]
+            }
+          }
+        },
+        {
+          "name": "Complete Workflow: Book Appointment (Valid Patient & Doctor)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientId\": 1,\n  \"doctorId\": 1,\n  \"appointmentDate\": \"2025-12-15T10:30:00Z\",\n  \"notes\": \"Follow-up consultation\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5003/api/v1/appointments",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5003",
+              "path": ["api", "v1", "appointments"]
+            }
+          }
+        },
+        {
+          "name": "Error Test: Book with Invalid Patient",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientId\": 99999,\n  \"doctorId\": 1,\n  \"appointmentDate\": \"2025-12-15T10:30:00Z\",\n  \"notes\": \"This should fail\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5003/api/v1/appointments",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5003",
+              "path": ["api", "v1", "appointments"]
+            }
+          }
+        },
+        {
+          "name": "Error Test: Book with Invalid Doctor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patientId\": 1,\n  \"doctorId\": 99999,\n  \"appointmentDate\": \"2025-12-15T10:30:00Z\",\n  \"notes\": \"This should fail\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5003/api/v1/appointments",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5003",
+              "path": ["api", "v1", "appointments"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
